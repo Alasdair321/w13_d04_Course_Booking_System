@@ -40,4 +40,9 @@ public class CourseController {
         return bookingRepository.findCustomersByTown(id, town);
     }
 
+    @GetMapping(value = "/{id}/customers/town/{town}/over/{age}")
+    public List<Customer> findCustomersByTownOverAge(@PathVariable Long id, @PathVariable String town, @PathVariable int age){
+        return bookingRepository.findCustomersByTownOverAge(id, town, age);
+    }
+
 }

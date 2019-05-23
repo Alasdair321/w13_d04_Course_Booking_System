@@ -9,6 +9,7 @@ public interface BookingRepositoryCustom {
     List<Customer> findCustomersByCourseId(Long id);
     List<Course> findCoursesByCustomerId(Long id);
     List<Customer> findCustomersByTown(Long id, String town);
+    List<Customer> findCustomersByTownOverAge(Long id, String town, int age);
 
 
 }

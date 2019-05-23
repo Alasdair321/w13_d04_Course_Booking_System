@@ -88,4 +88,34 @@ public class BookingRepositoryImpl extends UpperCaser implements BookingReposito
 
         return results;
     }
+
+    @Transactional
+    public List<Customer> findCustomersByTownOverAge(Long id, String town, int age) {
+        town = upperCaser(town);
+        List<Customer> results = null;
+
+        Session session = entityManager.unwrap(Session.class);
+
+        try{
+            Criteria cr = session.createCriteria(Customer.class);
+
+            cr.createAlias("bookings","booking");
+            cr.createAlias("booking.course","course");
+            cr.createAlias("booking.customer","customer");
+
+            cr.add(Restrictions.eq("town", town));
+
+            cr.add(Restrictions.eq("course.id", id));
+
+            cr.add(Restrictions.ge("customer.age", age));
+            results = cr.list();
+        }
+        catch (HibernateException ex) {
+            ex.printStackTrace();
+        } finally {
+            session.close();
+        }
+
+        return results;
+    }
 }
