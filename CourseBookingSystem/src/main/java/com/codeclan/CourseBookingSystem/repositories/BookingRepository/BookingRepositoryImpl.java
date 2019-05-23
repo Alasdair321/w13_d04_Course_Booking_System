@@ -3,6 +3,7 @@ package com.codeclan.CourseBookingSystem.repositories.BookingRepository;
 import com.codeclan.CourseBookingSystem.models.Booking;
 import com.codeclan.CourseBookingSystem.models.Course;
 import com.codeclan.CourseBookingSystem.models.Customer;
+import com.codeclan.CourseBookingSystem.repositories.UpperCaser;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -13,7 +14,7 @@ import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 import java.util.List;
 
-public class BookingRepositoryImpl implements BookingRepositoryCustom {
+public class BookingRepositoryImpl extends UpperCaser implements BookingRepositoryCustom {
 
     @Autowired
     EntityManager entityManager;
@@ -64,6 +65,7 @@ public class BookingRepositoryImpl implements BookingRepositoryCustom {
 
     @Transactional
     public List<Customer> findCustomersByTown(Long id, String town) {
+        town = upperCaser(town);
         List<Customer> results = null;
 
         Session session = entityManager.unwrap(Session.class);
