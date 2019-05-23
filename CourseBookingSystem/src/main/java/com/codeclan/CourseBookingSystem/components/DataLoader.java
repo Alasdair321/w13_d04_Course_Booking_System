@@ -43,13 +43,13 @@ public class DataLoader implements ApplicationRunner {
         Customer becky = new Customer("Becky", "Edinburgh", 30);
         customerRepository.save(becky);
 
-        Booking booking1 = new Booking("23/05/2019", agile, becky);
+        Booking booking1 = new Booking("23-05-2019", agile, becky);
         bookingRepository.save(booking1);
 
-        Booking booking2 = new Booking("23/06/2019", java, becky);
+        Booking booking2 = new Booking("23-06-2019", java, becky);
         bookingRepository.save(booking2);
 
-        Booking booking3 = new Booking("23/07/2019", spring, becky);
+        Booking booking3 = new Booking("23-07-2019", spring, becky);
         bookingRepository.save(booking3);
 
 
@@ -57,14 +57,14 @@ public class DataLoader implements ApplicationRunner {
         Customer alasdair = new Customer("Alasdair", "Dunfermline", 29);
         customerRepository.save(alasdair);
 
-        Booking booking4 = new Booking("23/05/2019", agile, alasdair);
-        bookingRepository.save(booking1);
+        Booking booking4 = new Booking("23-05-2019", agile, alasdair);
+        bookingRepository.save(booking4);
 
-        Booking booking5 = new Booking("23/06/2019", java, alasdair);
-        bookingRepository.save(booking1);
+        Booking booking5 = new Booking("23-06-2019", java, alasdair);
+        bookingRepository.save(booking5);
 
-        Booking booking6 = new Booking("23/07/2019", spring, alasdair);
-        bookingRepository.save(booking1);
+        Booking booking6 = new Booking("23-07-2019", spring, alasdair);
+        bookingRepository.save(booking6);
 
 
 
