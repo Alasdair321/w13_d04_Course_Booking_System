@@ -8,5 +8,7 @@ import java.util.List;
 public interface BookingRepositoryCustom {
     List<Customer> findCustomersByCourseId(Long id);
     List<Course> findCoursesByCustomerId(Long id);
+    List<Customer> findCustomersByTown(Long id, String town);
+
 
 }

@@ -61,4 +61,29 @@ public class BookingRepositoryImpl implements BookingRepositoryCustom {
 
         return results;
     }
+
+    @Transactional
+    public List<Customer> findCustomersByTown(Long id, String town) {
+        List<Customer> results = null;
+
+        Session session = entityManager.unwrap(Session.class);
+
+        try{
+            Criteria cr = session.createCriteria(Customer.class);
+            cr.add(Restrictions.eq("town", town));
+
+            cr.createAlias("bookings","booking");
+            cr.createAlias("booking.course","course");
+
+            cr.add(Restrictions.eq("course.id", id));
+            results = cr.list();
+        }
+        catch (HibernateException ex) {
+            ex.printStackTrace();
+        } finally {
+            session.close();
+        }
+
+        return results;
+    }
 }
